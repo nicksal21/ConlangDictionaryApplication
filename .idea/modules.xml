@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/dictionary.maker.iml" filepath="$PROJECT_DIR$/.idea/modules/dictionary.maker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/dictionary.maker_main.iml" filepath="$PROJECT_DIR$/.idea/modules/dictionary.maker_main.iml" group="dictionary.maker" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/dictionary.maker_test.iml" filepath="$PROJECT_DIR$/.idea/modules/dictionary.maker_test.iml" group="dictionary.maker" />
+    </modules>
+  </component>
+</project>
