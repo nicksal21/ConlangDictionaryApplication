@@ -1,14 +1,21 @@
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.util.function.Function;
 
 public class MainPage extends Application{
 
@@ -20,20 +27,25 @@ public class MainPage extends Application{
         // Sets Stage Title
         primaryStage.setTitle("Conlang Dictionary Creator");
 
+        // Make Grids
         GridPane grid = makeGrid(Pos.CENTER);
-
         GridPane buttons = makeGrid(Pos.CENTER);
 
+        // Make Elements
         Text title = makeTextLabel("Conlang Dictionary Maker", "Arial", FontWeight.EXTRA_BOLD, 32);
 
-        HBox newDict = makeButtonWithHBox("New Dictionary", 0, Pos.CENTER);
-        HBox loadDict = makeButtonWithHBox("Load Dictionary", 0, Pos.CENTER);
+        Button newDictButton = makeButton("New Dictionary");
+        Button loadDictButton = makeButton("Load Dictionary");
+        newDictButton.setOnAction(event -> {NewDictionaryPage newDictionaryPage = new NewDictionaryPage(); newDictionaryPage.start(new Stage());});
 
+        HBox newDict = makeHBox(newDictButton, 10, Pos.CENTER);
+        HBox loadDict = makeHBox(loadDictButton, 10, Pos.CENTER);
 
-
+        // Add to Buttons Grid
         buttons.add(newDict, 0, 0, 1 ,1);
         buttons.add(loadDict, 0, 1, 1 ,1);
 
+        // Add to Grid
         grid.add(title, 0, 0, 2 ,1);
         grid.add(buttons, 0, 1, 2 ,1);
 
@@ -80,9 +92,11 @@ public class MainPage extends Application{
         return grid;
     }
 
+    public static Button makeButton(String text){
+        return new Button(text);
+    }
 
-    public static HBox makeButtonWithHBox(String text, int spacing, Pos alignment){
-        Button button = new Button(text);
+    public static HBox makeHBox(Button button, int spacing, Pos alignment){
         HBox hbox = new HBox(spacing);
         hbox.setAlignment(alignment);
         hbox.getChildren().add(button);
@@ -94,5 +108,9 @@ public class MainPage extends Application{
         Text text = new Text(label);
         text.setFont(Font.font(fontFamily, weight, size));
         return text;
+    }
+
+    public static TextField makeTextLabel(){
+        return new TextField();
     }
 }
