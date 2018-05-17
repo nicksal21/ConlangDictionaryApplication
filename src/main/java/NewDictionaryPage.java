@@ -1,4 +1,5 @@
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -18,7 +19,7 @@ public class NewDictionaryPage extends Application{
 
         GridPane grid = MainPage.makeGrid(Pos.TOP_LEFT);
 
-        Text title = MainPage.makeTextLabel("Make New Dictionary", "Arial", FontWeight.EXTRA_BOLD, 32);
+        Text title = MainPage.makeTextLabel("Dictionary", "Arial", FontWeight.EXTRA_BOLD, 32);
 
         Text addNameLabel = MainPage.makeTextLabel("Name: ", "Arial", FontWeight.NORMAL, 16);
 
@@ -29,6 +30,9 @@ public class NewDictionaryPage extends Application{
         addDictButton.setOnAction(event -> {
             Dictionary dict = new Dictionary(addNameField.getText());
             dict.makeNewFile();
+            LoadDictionaryPage loadDictionaryPage = new LoadDictionaryPage();
+            loadDictionaryPage.start(new Stage());
+            primaryStage.hide();
         });
 
         HBox addDictBox = MainPage.makeHBox(addDictButton, 10, Pos.CENTER);
@@ -37,7 +41,6 @@ public class NewDictionaryPage extends Application{
         grid.add(title, 0, 0, 2 ,1);
         grid.add(addNameLabel, 0, 1, 1 ,1);
         grid.add(addNameField, 1, 1, 1 ,1);
-        grid.add(addDictBox, 2, 1, 1 ,1);
         grid.add(addDictBox, 2, 1, 1 ,1);
 
         // Creates scene

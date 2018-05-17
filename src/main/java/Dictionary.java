@@ -15,7 +15,7 @@ public class Dictionary {
     }
 
     public void makeNewFile() {
-        String path = getName() + ".txt";
+        String path = "src/Dictionaries/" + getName() + ".txt";
         File file = new File(path);
         if ( ! file.exists( ) )
         {

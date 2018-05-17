@@ -1,21 +1,18 @@
 import javafx.application.Application;
-import javafx.event.EventHandler;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
-
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.util.function.Function;
 
 public class MainPage extends Application{
 
@@ -35,8 +32,32 @@ public class MainPage extends Application{
         Text title = makeTextLabel("Conlang Dictionary Maker", "Arial", FontWeight.EXTRA_BOLD, 32);
 
         Button newDictButton = makeButton("New Dictionary");
+        newDictButton.setOnAction(event -> {
+            NewDictionaryPage newDictionaryPage = new NewDictionaryPage();
+            newDictionaryPage.start(new Stage());
+            primaryStage.hide();
+        });
+
         Button loadDictButton = makeButton("Load Dictionary");
-        newDictButton.setOnAction(event -> {NewDictionaryPage newDictionaryPage = new NewDictionaryPage(); newDictionaryPage.start(new Stage());});
+        loadDictButton.setOnAction(event -> {
+            final Stage dialog = new Stage();
+            dialog.initModality(Modality.APPLICATION_MODAL);
+            dialog.initOwner(primaryStage);
+            dialog.setTitle("Select Dictionary");
+
+            GridPane dialogGrid = makeGrid(Pos.TOP_LEFT);
+
+            Text dialogTitle = makeTextLabel("Select Dictionary", "Arial", FontWeight.BOLD, 28);
+
+            ComboBox dictionaries = makeComboBox();
+
+            dialogGrid.add(dialogTitle, 0, 0, 3,1);
+            dialogGrid.add(dictionaries, 0, 1, 1,1);
+
+            Scene dialogScene = new Scene(dialogGrid, 400, 400);
+            dialog.setScene(dialogScene);
+            dialog.show();
+        });
 
         HBox newDict = makeHBox(newDictButton, 10, Pos.CENTER);
         HBox loadDict = makeHBox(loadDictButton, 10, Pos.CENTER);
@@ -112,5 +133,13 @@ public class MainPage extends Application{
 
     public static TextField makeTextLabel(){
         return new TextField();
+    }
+
+    public static ComboBox makeComboBox(){
+        return new ComboBox();
+    }
+
+    public static ComboBox makeComboBox(ObservableList options){
+        return new ComboBox(options);
     }
 }
