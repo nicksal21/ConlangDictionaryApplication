@@ -1,4 +1,5 @@
 import javafx.application.Application;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -8,11 +9,20 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.stream.Stream;
 
 public class MainPage extends Application{
 
@@ -33,6 +43,7 @@ public class MainPage extends Application{
 
         Button newDictButton = makeButton("New Dictionary");
         newDictButton.setOnAction(event -> {
+            getDictFileNames();
             NewDictionaryPage newDictionaryPage = new NewDictionaryPage();
             newDictionaryPage.start(new Stage());
             primaryStage.hide();
@@ -50,6 +61,8 @@ public class MainPage extends Application{
             Text dialogTitle = makeTextLabel("Select Dictionary", "Arial", FontWeight.BOLD, 28);
 
             ComboBox dictionaries = makeComboBox();
+            ObservableList<String> dicts = getDictFileNames();
+            dictionaries.setItems(dicts);
 
             dialogGrid.add(dialogTitle, 0, 0, 3,1);
             dialogGrid.add(dictionaries, 0, 1, 1,1);
@@ -124,6 +137,15 @@ public class MainPage extends Application{
         return hbox;
     }
 
+    public static VBox makeVBox(Button button, int spacing, Pos alignment){
+        VBox vbox = new VBox(spacing);
+        vbox.setAlignment(alignment);
+        if(button != null){
+            vbox.getChildren().add(button);
+        }
+        return vbox;
+    }
+
 
     public static Text makeTextLabel(String label, String fontFamily, FontWeight weight, int size){
         Text text = new Text(label);
@@ -141,5 +163,22 @@ public class MainPage extends Application{
 
     public static ComboBox makeComboBox(ObservableList options){
         return new ComboBox(options);
+    }
+
+    public static ObservableList<String> getDictFileNames(){
+        ObservableList<String> strings = FXCollections.observableArrayList();
+        File folder = new File("src/Dictionaries");
+        File[] listOfFiles = folder.listFiles();
+
+        if (listOfFiles != null) {
+            for (File file : listOfFiles) {
+                if (file.isFile()) {
+                    strings.add(file.getName().substring(0, file.getName().indexOf('.')));
+                    System.out.println(file.getName().substring(0, file.getName().indexOf('.')));
+                }
+            }
+        }
+
+        return strings;
     }
 }

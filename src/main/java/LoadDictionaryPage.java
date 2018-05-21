@@ -1,9 +1,11 @@
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -21,20 +23,20 @@ public class LoadDictionaryPage extends Application {
         wordListButton.setOnAction(event -> {
         });
 
-        HBox wordListBox = MainPage.makeHBox(wordListButton, 10, Pos.CENTER);
-
         Button grammarListButton = MainPage.makeButton("View Grammar Rules");
-        wordListButton.setOnAction(event -> {
+        grammarListButton.setOnAction(event -> {
         });
 
-        HBox grammarBox = MainPage.makeHBox(grammarListButton, 10, Pos.CENTER);
+        wordListButton.setMaxWidth(Double.MAX_VALUE);
+        grammarListButton.setMaxWidth(Double.MAX_VALUE);
 
-        wordListButton.setPrefWidth(grammarBox.getWidth());
+        VBox buttonVBox = MainPage.makeVBox(null, 10, Pos.CENTER);
+        buttonVBox.setPadding(new Insets(0, 15, 10, 15));
+        buttonVBox.getChildren().addAll(wordListButton, grammarListButton);
 
         // Add elements to grid
         grid.add(title, 0, 0, 2 ,1);
-        grid.add(wordListBox, 1, 2, 1 ,1);
-        grid.add(grammarBox, 1, 3, 1 ,1);
+        grid.add(buttonVBox, 1, 3, 1 ,1);
 
         // Creates scene
         Scene scene = new Scene(grid, 500, 500);
