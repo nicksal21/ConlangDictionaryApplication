@@ -167,7 +167,7 @@ public class MainPage extends Application{
 
     public static ObservableList<String> getDictFileNames(){
         ObservableList<String> strings = FXCollections.observableArrayList();
-        File folder = new File("src/Dictionaries");
+        File folder = new File("Dictionaries");
         File[] listOfFiles = folder.listFiles();
 
         if (listOfFiles != null) {
