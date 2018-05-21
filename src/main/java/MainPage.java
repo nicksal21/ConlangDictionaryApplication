@@ -17,12 +17,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.stream.Stream;
 
 public class MainPage extends Application{
 
@@ -60,7 +54,7 @@ public class MainPage extends Application{
 
             Text dialogTitle = makeTextLabel("Select Dictionary", "Arial", FontWeight.BOLD, 28);
 
-            ComboBox dictionaries = makeComboBox();
+            ComboBox<String> dictionaries = makeComboBox();
             ObservableList<String> dicts = getDictFileNames();
             dictionaries.setItems(dicts);
 
@@ -107,6 +101,7 @@ public class MainPage extends Application{
     }
 
     // Make grid with default insets (10)
+    /*
     public static GridPane makeGrid(Pos alignment, int Hgap, int Vgap){
         GridPane grid = new GridPane();
         grid.setAlignment(alignment);
@@ -124,7 +119,7 @@ public class MainPage extends Application{
         grid.setVgap(Vgap);
         grid.setPadding(new Insets(top_pad, right_pad, bottom_pad, left_pad));
         return grid;
-    }
+    }*/
 
     public static Button makeButton(String text){
         return new Button(text);
@@ -157,15 +152,15 @@ public class MainPage extends Application{
         return new TextField();
     }
 
-    public static ComboBox makeComboBox(){
-        return new ComboBox();
+    private static ComboBox<String> makeComboBox(){
+        return new ComboBox<>();
     }
 
-    public static ComboBox makeComboBox(ObservableList options){
+    /*public static ComboBox makeComboBox(ObservableList options){
         return new ComboBox(options);
-    }
+    }*/
 
-    public static ObservableList<String> getDictFileNames(){
+    private static ObservableList<String> getDictFileNames(){
         ObservableList<String> strings = FXCollections.observableArrayList();
         File folder = new File("src/main/java/Dictionaries");
         File[] listOfFiles = folder.listFiles();

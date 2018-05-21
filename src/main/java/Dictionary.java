@@ -1,16 +1,17 @@
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
+// import java.util.ArrayList;
 
+@SuppressWarnings("ResultOfMethodCallIgnored")
 public class Dictionary {
-    public String name;
-    public ArrayList<Word> words;
+    private String name;
+    // public ArrayList<Word> words;
 
-    public Dictionary(String name){
+    Dictionary(String name){
         this.name = name;
     }
 
-    public String getName() {
+    private String getName() {
         return name;
     }
 
@@ -27,7 +28,7 @@ public class Dictionary {
         }
     }
 
-    public void addWord(){
+    /*public void addWord(){
 
-    }
+    }*/
 }

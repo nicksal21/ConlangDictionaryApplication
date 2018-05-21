@@ -1,2 +1,2 @@
-public class Errors {
-}
+/*public class Errors {
+}*/

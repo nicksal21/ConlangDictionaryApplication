@@ -1,4 +1,4 @@
-public enum PartOfSpeech {
+/*public enum PartOfSpeech {
     AdjectiveGeneral,
     AdjectiveDemonstrative,
     AdjectivePossessive,
@@ -21,4 +21,4 @@ public enum PartOfSpeech {
     Pronoun,
     Quantifier,
     Verb;
-}
+}*/
