@@ -18,7 +18,7 @@ public class Dictionary {
     public void makeNewFile() {
         String path = "src/main/java/Dictionaries/" + getName() + ".txt";
         File file = new File(path);
-        if ( ! file.exists( ) )
+        if (!file.exists())
         {
             try {
                 file.createNewFile();
@@ -28,13 +28,28 @@ public class Dictionary {
         }
         path = "src/main/java/Grammars/" + getName() + "Grammar.txt";
         file = new File(path);
-        if ( ! file.exists( ) )
+        if (!file.exists())
         {
             try {
                 file.createNewFile();
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    public static void dropFile(String dict){
+        String path = "src/main/java/Dictionaries/" + dict + ".txt";
+        File file = new File(path);
+        if ( file.exists() )
+        {
+            file.delete();
+        }
+        path = "src/main/java/Grammars/" + dict + "Grammar.txt";
+        file = new File(path);
+        if (file.exists())
+        {
+            file.delete();
         }
     }
 

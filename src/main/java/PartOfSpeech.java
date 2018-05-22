@@ -20,5 +20,6 @@ public enum PartOfSpeech {
     Preverb,
     Pronoun,
     Quantifier,
-    Verb;
+    Verb,
+    Other
 }

@@ -2,7 +2,7 @@ public enum RuleType {
     Graphemic,
     Lexical,
     Morphological,
-    Orthogaphical,
+    Orthographical,
     Phonological,
     Pragmatic,
     Semantic,

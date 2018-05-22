@@ -1,4 +1,5 @@
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -33,13 +34,23 @@ public class NewDictionaryPage extends Application{
             primaryStage.hide();
         });
 
+        Button backButton = MainPage.makeButton("Back");
+        backButton.setOnAction(event -> {
+            MainPage mp = new MainPage();
+            Stage mainStage = new Stage();
+            mp.start(mainStage);
+            primaryStage.hide();
+        });
+
         HBox addDictBox = MainPage.makeHBox(addDictButton, 10, Pos.CENTER);
+        HBox addBackButton = MainPage.makeHBox(backButton, 10, Pos.CENTER);
 
         // Add elements to grid
         grid.add(title, 0, 0, 2 ,1);
         grid.add(addNameLabel, 0, 1, 1 ,1);
         grid.add(addNameField, 1, 1, 1 ,1);
         grid.add(addDictBox, 2, 1, 1 ,1);
+        grid.add(addBackButton, 3, 1, 1 ,1);
 
         // Creates scene
         Scene scene = new Scene(grid, 500, 500);
