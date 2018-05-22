@@ -79,7 +79,7 @@ public class GrammarRulesPage extends Application{
         outerGrid.add(bottomGrid, 0, 1);
 
         // Creates scene
-        Scene scene = new Scene(outerGrid, 650, 500);
+        Scene scene = new Scene(outerGrid, 700, 500);
 
         // Sets scene
         primaryStage.setScene(scene);

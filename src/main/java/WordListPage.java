@@ -71,6 +71,8 @@ public class WordListPage extends Application{
         wordTable.getColumns().addAll(word, ipa, plural, pluralIPA, partOfSpeech, classification, definition, specialNotes);
         wordTable.setPrefWidth(1200);
         wordTable.setEditable(false);
+        word.setSortType(TableColumn.SortType.ASCENDING);
+        wordTable.getSortOrder().add(word);
 
 
         // Add elements to grid
