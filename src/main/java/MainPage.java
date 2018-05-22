@@ -2,12 +2,10 @@ import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -177,6 +175,23 @@ public class MainPage extends Application{
     /*public static ComboBox makeComboBox(ObservableList options){
         return new ComboBox(options);
     }*/
+
+    public static ListView<String> makeListView(){
+        return new ListView<>();
+    }
+
+    public static TableView makeTableView() {
+        return new TableView();
+    }
+
+    public static TableColumn makeTableColumn() {
+        return new TableColumn();
+    }
+
+
+    public static TableColumn makeTableColumn(String label) {
+        return new TableColumn(label);
+    }
 
     private static ObservableList<String> getDictFileNames(){
         ObservableList<String> strings = FXCollections.observableArrayList();

@@ -15,7 +15,9 @@ public class GrammarRulesPage extends Application{
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Conlang Dictionary Creator");
 
-        GridPane grid = MainPage.makeGrid(Pos.TOP_LEFT);
+        GridPane outerGrid = MainPage.makeGrid(Pos.TOP_LEFT);
+        GridPane topGrid = MainPage.makeGrid(Pos.TOP_LEFT);
+        GridPane bottomGrid = MainPage.makeGrid(Pos.TOP_LEFT);
 
         Text title = MainPage.makeTextLsbel("Grammar Rules List", "Arial", FontWeight.EXTRA_BOLD, 32);
 
@@ -32,13 +34,14 @@ public class GrammarRulesPage extends Application{
 
 
         // Add elements to grid
-        grid.add(title, 0, 0, 3,1);
-        grid.add(searchLabelType, 0, 1, 1,1);
-        grid.add(searchBarType, 1, 1, 1,1);
-        grid.add(searchTypeHBox, 2, 1, 1,1);
+        topGrid.add(title, 0, 0, 3,1);
+        topGrid.add(searchLabelType, 0, 1, 1,1);
+        topGrid.add(searchBarType, 1, 1, 1,1);
+        topGrid.add(searchTypeHBox, 2, 1, 1,1);
+        bottomGrid.add(,0,0,1,1);
 
         // Creates scene
-        Scene scene = new Scene(grid, 500, 500);
+        Scene scene = new Scene(outerGrid, 500, 500);
 
         // Sets scene
         primaryStage.setScene(scene);
