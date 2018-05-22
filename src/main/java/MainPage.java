@@ -169,7 +169,6 @@ public class MainPage extends Application{
             for (File file : listOfFiles) {
                 if (file.isFile()) {
                     strings.add(file.getName().substring(0, file.getName().indexOf('.')));
-                    System.out.println(file.getName().substring(0, file.getName().indexOf('.')));
                 }
             }
         }
