@@ -6,6 +6,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -19,7 +20,7 @@ import javafx.stage.Stage;
 import java.io.File;
 
 public class MainPage extends Application{
-
+    public static String dictName = "";
     public static void main(String[] args) {
         launch(args);
     }
@@ -33,7 +34,7 @@ public class MainPage extends Application{
         GridPane buttons = makeGrid(Pos.CENTER);
 
         // Make Elements
-        Text title = makeTextLabel("Conlang Dictionary Maker", "Arial", FontWeight.EXTRA_BOLD, 32);
+        Text title = makeTextLsbel("Conlang Dictionary Maker", "Arial", FontWeight.EXTRA_BOLD, 32);
 
         Button newDictButton = makeButton("New Dictionary");
         newDictButton.setOnAction(event -> {
@@ -52,14 +53,27 @@ public class MainPage extends Application{
 
             GridPane dialogGrid = makeGrid(Pos.TOP_LEFT);
 
-            Text dialogTitle = makeTextLabel("Select Dictionary", "Arial", FontWeight.BOLD, 28);
+            Text dialogTitle = makeTextLsbel("Select Dictionary", "Arial", FontWeight.BOLD, 28);
 
             ComboBox<String> dictionaries = makeComboBox();
             ObservableList<String> dicts = getDictFileNames();
             dictionaries.setItems(dicts);
 
+            Button select = makeButton("Select");
+            select.setOnAction(event1 -> {
+                if(dictionaries.getValue() != null){
+                    dictName = dictionaries.getValue();
+                    LoadDictionaryPage loadDictionaryPage = new LoadDictionaryPage();
+                    loadDictionaryPage.start(new Stage());
+                    dialog.hide();
+                    primaryStage.hide();
+                }
+            });
+            HBox selectBox = makeHBox(select, 10, Pos.CENTER);
+
             dialogGrid.add(dialogTitle, 0, 0, 3,1);
             dialogGrid.add(dictionaries, 0, 1, 1,1);
+            dialogGrid.add(selectBox, 1, 1, 1,1);
 
             Scene dialogScene = new Scene(dialogGrid, 400, 400);
             dialog.setScene(dialogScene);
@@ -142,14 +156,18 @@ public class MainPage extends Application{
     }
 
 
-    public static Text makeTextLabel(String label, String fontFamily, FontWeight weight, int size){
+    public static Text makeTextLsbel(String label, String fontFamily, FontWeight weight, int size){
         Text text = new Text(label);
         text.setFont(Font.font(fontFamily, weight, size));
         return text;
     }
 
-    public static TextField makeTextLabel(){
+    public static TextField makeTextField(){
         return new TextField();
+    }
+
+    public static TextArea makeTextArea(){
+        return new TextArea();
     }
 
     private static ComboBox<String> makeComboBox(){

@@ -21,7 +21,17 @@ public class Dictionary {
         if ( ! file.exists( ) )
         {
             try {
-                file.createNewFile( );
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        path = "src/main/java/Grammars/" + getName() + "Grammar.txt";
+        file = new File(path);
+        if ( ! file.exists( ) )
+        {
+            try {
+                file.createNewFile();
             } catch (IOException e) {
                 e.printStackTrace();
             }

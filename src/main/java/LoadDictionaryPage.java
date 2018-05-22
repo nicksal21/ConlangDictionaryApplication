@@ -12,18 +12,25 @@ import javafx.stage.Stage;
 public class LoadDictionaryPage extends Application {
     @Override
     public void start(Stage primaryStage){
+        String dictName = MainPage.dictName;
         primaryStage.setTitle("Load Dictionary");
 
         GridPane grid = MainPage.makeGrid(Pos.CENTER);
 
-        Text title = MainPage.makeTextLabel("Load New Dictionary", "Arial", FontWeight.EXTRA_BOLD, 32);
+        Text title = MainPage.makeTextLsbel( dictName + " Dictionary", "Arial", FontWeight.EXTRA_BOLD, 32);
 
         Button wordListButton = MainPage.makeButton("View Word List");
         wordListButton.setOnAction(event -> {
+            WordListPage wordListPage = new WordListPage();
+            wordListPage.start(new Stage());
+            primaryStage.hide();
         });
 
         Button grammarListButton = MainPage.makeButton("View Grammar Rules");
         grammarListButton.setOnAction(event -> {
+            GrammarRulesPage grammarRulesPage = new GrammarRulesPage();
+            grammarRulesPage.start(new Stage());
+            primaryStage.hide();
         });
 
         wordListButton.setMaxWidth(Double.MAX_VALUE);

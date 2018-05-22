@@ -16,17 +16,18 @@ public class NewDictionaryPage extends Application{
 
         GridPane grid = MainPage.makeGrid(Pos.TOP_LEFT);
 
-        Text title = MainPage.makeTextLabel("Dictionary", "Arial", FontWeight.EXTRA_BOLD, 32);
+        Text title = MainPage.makeTextLsbel("Dictionary", "Arial", FontWeight.EXTRA_BOLD, 32);
 
-        Text addNameLabel = MainPage.makeTextLabel("Name: ", "Arial", FontWeight.NORMAL, 16);
+        Text addNameLabel = MainPage.makeTextLsbel("Name: ", "Arial", FontWeight.NORMAL, 16);
 
-        TextField addNameField = MainPage.makeTextLabel();
+        TextField addNameField = MainPage.makeTextField();
 
 
         Button addDictButton = MainPage.makeButton("New Dictionary");
         addDictButton.setOnAction(event -> {
             Dictionary dict = new Dictionary(addNameField.getText());
             dict.makeNewFile();
+            MainPage.dictName = addNameField.getText();
             LoadDictionaryPage loadDictionaryPage = new LoadDictionaryPage();
             loadDictionaryPage.start(new Stage());
             primaryStage.hide();
