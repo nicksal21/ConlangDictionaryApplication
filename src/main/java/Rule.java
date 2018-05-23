@@ -1,7 +1,7 @@
 public class Rule {
-    public String name;
-    public RuleType type;
-    public String description;
+    private String name;
+    private RuleType type;
+    private String description;
 
     public Rule(String name, RuleType type, String description) {
         this.name = name;
@@ -9,7 +9,7 @@ public class Rule {
         this.description = description;
     }
 
-    public String getName() {
+    private String getName() {
         return name;
     }
 
@@ -17,7 +17,7 @@ public class Rule {
         this.name = name;
     }
 
-    public RuleType getType() {
+    private RuleType getType() {
         return type;
     }
 
@@ -25,11 +25,15 @@ public class Rule {
         this.type = type;
     }
 
-    public String getDescription() {
+    private String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String toString() {
+        return getName() + "||" + getType()+ "||" + getDescription();
     }
 }

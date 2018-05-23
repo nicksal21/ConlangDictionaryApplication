@@ -1,5 +1,14 @@
-import java.io.File;
-import java.io.IOException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+import java.io.*;
+import java.lang.reflect.Array;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.List;
 // import java.util.ArrayList;
 
 @SuppressWarnings("ResultOfMethodCallIgnored")
@@ -53,7 +62,33 @@ public class Dictionary {
         }
     }
 
-    /*public void addWord(){
+    public ObservableList<Word> getWordList(String dictionary) throws IOException {
+        ObservableList<Word> words = FXCollections.observableArrayList();
+        File file = new File("src/main/java/Dictionaries/" + getName() + ".txt");
 
-    }*/
+        BufferedReader br = new BufferedReader(new FileReader(file));
+
+        while (br.readLine() != null) {
+
+        }
+        return words;
+    }
+
+    public void addWord(Word word) {
+        try (Writer writer = new BufferedWriter(new OutputStreamWriter(
+                new FileOutputStream(getName() + ".txt"), "utf-8"))) {
+            writer.write(word.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addRule(Rule rule) {
+        try (Writer writer = new BufferedWriter(new OutputStreamWriter(
+                new FileOutputStream(getName() + "Grammar.txt"), "utf-8"))) {
+            writer.write(rule.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -1,12 +1,12 @@
 public class Word {
-    public String word;
-    public String ipa;
-    public String plural;
-    public String pluralIpa;
-    public PartOfSpeech partOfSpeech;
-    public String classification;
-    public String definition;
-    public String specialNotes;
+    private String word;
+    private String ipa;
+    private String plural;
+    private String pluralIpa;
+    private PartOfSpeech partOfSpeech;
+    private String classification;
+    private String definition;
+    private String specialNotes;
 
     public Word(String word, String ipa, String plural, String pluralIpa, PartOfSpeech partOfSpeech, String classification, String definition, String specialNotes) {
         this.word = word;
@@ -36,7 +36,7 @@ public class Word {
         this.specialNotes = specialNotes;
     }
 
-    public String getWord() {
+    private String getWord() {
         return word;
     }
 
@@ -44,7 +44,7 @@ public class Word {
         this.word = word;
     }
 
-    public String getIpa() {
+    private String getIpa() {
         return ipa;
     }
 
@@ -52,7 +52,7 @@ public class Word {
         this.ipa = ipa;
     }
 
-    public String getPlural() {
+    private String getPlural() {
         return plural;
     }
 
@@ -60,7 +60,7 @@ public class Word {
         this.plural = plural;
     }
 
-    public String getPluralIpa() {
+    private String getPluralIpa() {
         return pluralIpa;
     }
 
@@ -68,7 +68,7 @@ public class Word {
         this.pluralIpa = pluralIpa;
     }
 
-    public PartOfSpeech getPartOfSpeech() {
+    private PartOfSpeech getPartOfSpeech() {
         return partOfSpeech;
     }
 
@@ -76,7 +76,7 @@ public class Word {
         this.partOfSpeech = partOfSpeech;
     }
 
-    public String getClassification() {
+    private String getClassification() {
         return classification;
     }
 
@@ -84,7 +84,7 @@ public class Word {
         this.classification = classification;
     }
 
-    public String getDefinition() {
+    private String getDefinition() {
         return definition;
     }
 
@@ -92,7 +92,7 @@ public class Word {
         this.definition = definition;
     }
 
-    public String getSpecialNotes() {
+    private String getSpecialNotes() {
         return specialNotes;
     }
 
@@ -100,5 +100,9 @@ public class Word {
         this.specialNotes = specialNotes;
     }
 
-
+    @Override
+    public String toString() {
+        return getWord() + "||" + getIpa() + "||" + getPlural() + "||" + getPluralIpa() + "||" + getPartOfSpeech()  +
+                "||" + getClassification()  + "||" + getDefinition()  + "||" + getSpecialNotes();
+    }
 }
