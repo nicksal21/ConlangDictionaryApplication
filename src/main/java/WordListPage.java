@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 public class WordListPage extends Application{
     @Override
     public void start(Stage primaryStage) {
+        Stage createWordStage = new Stage();
         String dictName = MainPage.dictName;
         primaryStage.setTitle("Conlang Dictionary Creator");
 
@@ -46,7 +47,12 @@ public class WordListPage extends Application{
         Button createButton = MainPage.makeButton("Create Word");
         createButton.setOnAction(event -> {
 //            TODO: Create searchable field and searching method, sorting method for dictionaries
-            Error.sendAlert(new Error(Alert.AlertType.ERROR, "Error", "Unimplemented! Need to make interface"));
+            CreateWordPage wordPage = new CreateWordPage();
+            if(createWordStage.isShowing()){
+                createButton.setDisable(true);
+            }
+            wordPage.start(createWordStage);
+
         });
         HBox createHBox = MainPage.makeHBox(createButton, 10, Pos.CENTER);
 

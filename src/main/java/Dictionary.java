@@ -69,7 +69,7 @@ public class Dictionary {
         BufferedReader br = new BufferedReader(new FileReader(file));
 
         while (br.readLine() != null) {
-
+            //TODO: Look for words in text, parse string into list by "|" operator
         }
         return words;
     }

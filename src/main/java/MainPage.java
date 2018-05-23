@@ -167,9 +167,15 @@ public class MainPage extends Application{
         return new TextArea();
     }
 
-    private static ComboBox<String> makeComboBox(){
+    public static ComboBox<String> makeComboBox(){
         return new ComboBox<>();
     }
+
+
+    public static ComboBox<PartOfSpeech> makeSpeechComboBox(){
+        return new ComboBox<>();
+    }
+
 
     /*public static ComboBox makeComboBox(ObservableList options){
         return new ComboBox(options);
